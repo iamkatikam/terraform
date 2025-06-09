@@ -1,12 +1,25 @@
-provider "aws" {
-    region = "us-east-1"
-}
+resource "aws_security_group" "allow_all" {
+  name        = "allow_all"
+  description = "Allow TLS inbound traffic and all outbound traffic"
 
-resource "aws_instance" "example" {
-  ami = "ami-02457590d33d576c3" # Example AMI ID, replace with a valid one
-  instance_type = "t2.micro"
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
 
   tags = {
-    Name = "ExampleInstance"
+    Name = "allow-all"
   }
 }
+
