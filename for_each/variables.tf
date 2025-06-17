@@ -63,3 +63,27 @@ variable security_group_tags {
     purpose = "variables demo"
   }
 }
+variable "zone_id" {
+    default = "Z0816687161ICZE30XIP3"
+  
+}
+
+variable "domain_name" {
+    default = "rameshaws.site"
+  
+}
+
+variable "instances" {
+  default = {
+    redis = "t3.micro"
+    mysql = "t3.small"
+    rabbitmq = "t3.micro"
+  }
+}
+variable "environment" {
+
+  default = {
+    Name = "dev"
+  }
+  
+}

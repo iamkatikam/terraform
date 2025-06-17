@@ -1,13 +1,12 @@
 resource "aws_instance" "web" {
-  count = 4
+  for_each = var.instances
   ami           = var.ami_id
-  instance_type = var.environment == "development" ? "t3.micro" : "t3.small"
+  instance_type = each.value
   vpc_security_group_ids = [aws_security_group.allow_all.id]
   tags = {
-    Name = var.instances[count.index]
-  } 
+    Name = each.key
 }
-
+}
 resource "aws_security_group" "allow_all" {
   name        = var.security_group_name
   description = var.security_group_description
@@ -29,5 +28,5 @@ resource "aws_security_group" "allow_all" {
   }
 
   tags = var.security_group_tags
-}
 
+}
