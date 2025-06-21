@@ -63,3 +63,8 @@ variable security_group_tags {
     purpose = "variables demo"
   }
 }
+
+variable "environment" {
+  default = "dev"
+  
+}
