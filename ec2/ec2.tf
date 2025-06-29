@@ -11,7 +11,7 @@ resource "aws_security_group" "allow_all" {
   name        = "allow_all"
   description = "Allow TLS inbound traffic and all outbound traffic"
 
-  egress {
+  ingress {
     from_port        = 0
     to_port          = 0
     protocol         = "-1"
