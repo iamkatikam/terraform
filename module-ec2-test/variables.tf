@@ -1,5 +1,5 @@
 variable "security_group_ids" {
-    default = ["sg-0aba3fdb97c048851"]
+    default = ["sg-0a30f9b8a8f6adb2b"]
     type = list(string)
 }
 
